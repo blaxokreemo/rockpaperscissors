@@ -20,24 +20,28 @@ function playRound(playerSelection, computerChoice) {
     lose = `You lose! Computer's ${computerChoice} beats your ${playerSelection}!`;
     tie = `It's a tie! Play again.`;
     badInput = "Not an option, buddy.";
-    
-    if (playerSelection == "rock") {
-        if (computerChoice == "rock") {
-            return tie;
-        } else if (computerChoice == "paper") {
-            return lose;
-        } else if (computerChoice == "scissors") {
+
+    if (playerSelection === computerChoice) {
+        return tie;
+    } else if (playerSelection === "rock") {
+        if (computerChoice === "scissors") {
             return win;
         } else {
-            return badInput;
+            return lose;
         }
-    } 
+    } else if (playerSelection === "paper") {
+        if (computerChoice === "rock") {
+            return win;
+        } else {
+            return lose;
+        }
+    } else if (playerSelection === "scissors") {
+        if (computerChoice === "paper") {
+            return win;
+        } else {
+            return lose;
+        }
+    } else {
+        return badInput;
+    }
 }
-
-/*
-const playerSelection = "rock";
-const computerChoice = getComputerChoice();
-
-
-console.log(playRound(playerSelection, computerChoice));
-*/
