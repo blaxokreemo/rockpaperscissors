@@ -11,3 +11,27 @@ function getComputerChoice() {
 
     return computerChoice;
 }
+
+function playRound(playerSelection, computerChoice) {    
+    computerChoice = getComputerChoice();
+    
+    if (playerSelection == "rock") {
+        if (computerChoice == "rock") {
+            return "It's a tie! Play again.";
+        } else if (computerChoice == "paper") {
+            return "You lose! Paper beats rock.";
+        } else if (computerChoice == "scissors") {
+            return "You win! Rock beats scissors!";
+        } else {
+            return "Not an option, buddy.";
+        }
+    }
+}
+
+/*
+const playerSelection = "rock";
+const computerChoice = getComputerChoice();
+
+
+console.log(playRound(playerSelection, computerChoice));
+*/
