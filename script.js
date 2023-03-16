@@ -13,7 +13,9 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection, computerChoice) {    
+    
     computerChoice = getComputerChoice();
+    playerSelection = playerSelection.toLowerCase()
     
     if (playerSelection == "rock") {
         if (computerChoice == "rock") {
