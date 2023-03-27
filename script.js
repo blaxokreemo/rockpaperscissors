@@ -14,12 +14,15 @@ function getComputerChoice() {
 
 function playRound(playerSelection, computerChoice) {    
     
-    computerChoice = getComputerChoice();
-    playerSelection = playerSelection.toLowerCase();
-    win = `You win! Your ${playerSelection} beats Computer's ${computerChoice}!`;
-    lose = `You lose! Computer's ${computerChoice} beats your ${playerSelection}!`;
-    tie = `It's a tie! Play again.`;
-    badInput = "Not an option, buddy. Round forfeit to Computer.";
+    let computerChoice = getComputerChoice();
+    let playerSelection = playerSelection.toLowerCase();
+    let win = `You win! Your ${playerSelection} beats Computer's ${computerChoice}!`;
+    let lose = `You lose! Computer's ${computerChoice} beats your ${playerSelection}!`;
+    let tie = `It's a tie! Play again.`;
+    let badInput = "Not an option, buddy. Round forfeit to Computer.";
+    let computerScore = 0;
+    let playerScore = 0;
+
 
     if (playerSelection === computerChoice) {
         console.log(tie);
@@ -27,32 +30,41 @@ function playRound(playerSelection, computerChoice) {
     } else if (playerSelection === "rock") {
         if (computerChoice === "scissors") {
             console.log(win);
-            return 1;
+            playerScore++;
         } else {
             console.log(lose);
-            return -1;
+            computerScore++;
         }
     } else if (playerSelection === "paper") {
         if (computerChoice === "rock") {
             console.log(win);
-            return 1;
+            playerScore++;
         } else {
             console.log(lose);
-            return -1;
+            computerScore++;
         }
     } else if (playerSelection === "scissors") {
         if (computerChoice === "paper") {
             console.log(win);
-            return 1;
+            playerScore++;
         } else {
             console.log(lose);
-            return -1;
+            computerScore++;
         }
     } else {
         console.log(badInput);
         return -1;
     }
 }
+
+const buttons = document.querySelectorAll('.btn');
+buttons.forEach(btn => btn.addEventListener('click', startGame));
+
+function startGame(e) {
+    playRound(e.target.getAttribute("data-move"));
+}
+
+/*
 
 function game() {
 
@@ -69,3 +81,5 @@ function game() {
     console.log(`Your final score is ${score}. Thanks for playing!`);
 
 }
+
+*/

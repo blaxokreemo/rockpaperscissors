@@ -1,0 +1,18 @@
+.playSpace {
+    background: rgb(178, 127, 226);
+    border: 5px solid rgb(236, 171, 72);
+    padding: 50px;
+    border-radius: 25px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.btn {
+    background: rgb(98, 170, 218);
+    border: 5px solid rgb(126, 114, 114);
+    padding: 10px;
+    font-size: larger;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: white;
+    border-radius: 10px;
+}
