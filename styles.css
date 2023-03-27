@@ -1,7 +1,15 @@
+.game {
+    background: rgb(240, 247, 151);
+    font-size: larger;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: white;
+}
+
 .playSpace {
     background: rgb(178, 127, 226);
     border: 5px solid rgb(236, 171, 72);
     padding: 50px;
+    margin: 10px;
     border-radius: 25px;
     display: flex;
     justify-content: space-around;
@@ -11,8 +19,25 @@
     background: rgb(98, 170, 218);
     border: 5px solid rgb(126, 114, 114);
     padding: 10px;
-    font-size: larger;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    color: white;
     border-radius: 10px;
+}
+
+.display {
+    background: rgb(98, 170, 218);
+    border: 5px solid rgb(178, 127, 226);
+    border-radius: 25px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+}
+
+.numbers {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+
+p {
+    text-align: center;
 }

@@ -1,3 +1,24 @@
+let actionLog = document.querySelector("#actionLog");
+
+let computerScore = 0;
+let playerScore = 0;
+let gamesPlayed = 0;
+let psCounter = document.querySelector("#playerScore");
+let csCounter = document.querySelector("#computerScore");
+let gCounter = document.querySelector("#gameCount");
+let psNum = document.createElement('p');
+let csNum = document.createElement('p');
+let gNum = document.createElement('p');
+
+psNum.textContent = `${playerScore}`;
+csNum.textContent = `${computerScore}`;
+gNum.textContent = `${gamesPlayed}`;
+
+
+gCounter.appendChild(gNum);
+psCounter.appendChild(psNum);
+csCounter.appendChild(csNum);
+
 function getComputerChoice() {
     let randomNumber = (Math.random() * 100);
     let computerChoice;
@@ -14,46 +35,49 @@ function getComputerChoice() {
 
 function playRound(playerSelection, computerChoice) {    
     
-    let computerChoice = getComputerChoice();
-    let playerSelection = playerSelection.toLowerCase();
+    computerChoice = getComputerChoice();
+    playerSelection = playerSelection.toLowerCase();
     let win = `You win! Your ${playerSelection} beats Computer's ${computerChoice}!`;
     let lose = `You lose! Computer's ${computerChoice} beats your ${playerSelection}!`;
     let tie = `It's a tie! Play again.`;
     let badInput = "Not an option, buddy. Round forfeit to Computer.";
-    let computerScore = 0;
-    let playerScore = 0;
-
 
     if (playerSelection === computerChoice) {
-        console.log(tie);
-        return 0;
+        gamesPlayed++;
+        return tie;
     } else if (playerSelection === "rock") {
         if (computerChoice === "scissors") {
-            console.log(win);
             playerScore++;
+            gamesPlayed++;
+            return win;
+            
         } else {
-            console.log(lose);
             computerScore++;
+            gamesPlayed++;
+            return lose;
         }
     } else if (playerSelection === "paper") {
         if (computerChoice === "rock") {
-            console.log(win);
             playerScore++;
+            gamesPlayed++;
+            return win;
         } else {
-            console.log(lose);
             computerScore++;
+            gamesPlayed++;
+            return lose;
         }
     } else if (playerSelection === "scissors") {
         if (computerChoice === "paper") {
-            console.log(win);
             playerScore++;
+            gamesPlayed++
+            return win;
         } else {
-            console.log(lose);
             computerScore++;
+            gamesPlayed++;
+            return lose;
         }
     } else {
-        console.log(badInput);
-        return -1;
+        return badInput;
     }
 }
 
@@ -61,7 +85,11 @@ const buttons = document.querySelectorAll('.btn');
 buttons.forEach(btn => btn.addEventListener('click', startGame));
 
 function startGame(e) {
-    playRound(e.target.getAttribute("data-move"));
+    actionLog.textContent = playRound(e.target.getAttribute("data-move"));
+    psNum.textContent = `${playerScore}`;
+    csNum.textContent = `${computerScore}`;
+    gNum.textContent = `${gamesPlayed}`;
+    
 }
 
 /*
