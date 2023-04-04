@@ -85,10 +85,23 @@ const buttons = document.querySelectorAll('.btn');
 buttons.forEach(btn => btn.addEventListener('click', startGame));
 
 function startGame(e) {
-    actionLog.textContent = playRound(e.target.getAttribute("data-move"));
     psNum.textContent = `${playerScore}`;
     csNum.textContent = `${computerScore}`;
     gNum.textContent = `${gamesPlayed}`;
+    
+    if (playerScore >= 5) {
+        gameOver = document.createElement('p');
+        gameOver.classList.add("gameOver")
+        congrats.textContent = `Congratulations! You won ${playerScore} to ${computerScore}!`
+        document.querySelector('#numbers').appendChild(gameOver);
+    } else if (computerScore >= 5) {
+        gameOver = document.createElement('p');
+        gameOver.classList.add("gameOver");
+        gameOver.textContent = `Too bad! You lost against the computer ${computerScore} to ${playerScore}!`;
+        document.querySelector('#numbers').appendChild(gameOver);
+    } else {
+            actionLog.textContent = playRound(e.target.getAttribute("data-move"));
+    }
     
 }
 
