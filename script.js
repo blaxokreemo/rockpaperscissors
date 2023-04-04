@@ -92,7 +92,7 @@ function startGame(e) {
     if (playerScore >= 5) {
         gameOver = document.createElement('p');
         gameOver.classList.add("gameOver")
-        congrats.textContent = `Congratulations! You won ${playerScore} to ${computerScore}!`
+        gameOver.textContent = `Congratulations! You won ${playerScore} to ${computerScore}!`
         document.querySelector('#numbers').appendChild(gameOver);
     } else if (computerScore >= 5) {
         gameOver = document.createElement('p');
@@ -100,7 +100,10 @@ function startGame(e) {
         gameOver.textContent = `Too bad! You lost against the computer ${computerScore} to ${playerScore}!`;
         document.querySelector('#numbers').appendChild(gameOver);
     } else {
-            actionLog.textContent = playRound(e.target.getAttribute("data-move"));
+        actionLog.textContent = playRound(e.target.getAttribute("data-move"));
+        psNum.textContent = `${playerScore}`;
+        csNum.textContent = `${computerScore}`;
+        gNum.textContent = `${gamesPlayed}`;
     }
     
 }
