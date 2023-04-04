@@ -85,10 +85,7 @@ const buttons = document.querySelectorAll('.btn');
 buttons.forEach(btn => btn.addEventListener('click', startGame));
 
 function startGame(e) {
-    psNum.textContent = `${playerScore}`;
-    csNum.textContent = `${computerScore}`;
-    gNum.textContent = `${gamesPlayed}`;
-    
+
     if (playerScore >= 5) {
         gameOver = document.createElement('p');
         gameOver.classList.add("gameOver")
