@@ -14,7 +14,6 @@ psNum.textContent = `${playerScore}`;
 csNum.textContent = `${computerScore}`;
 gNum.textContent = `${gamesPlayed}`;
 
-
 gCounter.appendChild(gNum);
 psCounter.appendChild(psNum);
 csCounter.appendChild(csNum);
@@ -87,34 +86,21 @@ buttons.forEach(btn => btn.addEventListener('click', startGame));
 function startGame(e) {
 
     actionLog.textContent = playRound(e.target.getAttribute("data-move"));
-    psNum.textContent = `${playerScore}`;
-    csNum.textContent = `${computerScore}`;
-    gNum.textContent = `${gamesPlayed}`;
+    refreshScores();
 
     if (playerScore >= 5) {
         gameOver = document.createElement('p');
         gameOver.classList.add("gameOver")
         gameOver.textContent = `Congratulations! You won ${playerScore} to ${computerScore}!`
         document.querySelector('.log').appendChild(gameOver);
-        startOverBtn = document.createElement('button');
-        startOverBtn.classList.add('btn');
-        startOverBtn.style["background"] = "rgb(240, 247, 151)";
-        startOverBtn.style["align"] = "center";
-        startOverBtn.textContent = "Play Again";
-        startOverBtn.addEventListener('click', startOver);
-        document.querySelector('.log').appendChild(startOverBtn);
+        startOverButton();
+        
     } else if (computerScore >= 5) {
         gameOver = document.createElement('p');
         gameOver.classList.add("gameOver");
         gameOver.textContent = `Too bad! You lost against the computer ${computerScore} to ${playerScore}!`;
         document.querySelector('.log').appendChild(gameOver);
-        startOverBtn = document.createElement('button');
-        startOverBtn.classList.add('btn');
-        startOverBtn.style["background"] = "rgb(240, 247, 151)";
-        startOverBtn.style["align"] = "center";
-        startOverBtn.textContent = "Play Again";
-        startOverBtn.addEventListener('click', startOver);
-        document.querySelector('.log').appendChild(startOverBtn);
+        startOverButton();
     } else {
         return;
     }
@@ -122,12 +108,31 @@ function startGame(e) {
 }
 
 function startOver() {
-    psNum.textContent = `${playerScore}`;
-    csNum.textContent = `${computerScore}`;
-    gNum.textContent = `${gamesPlayed}`;
+    refreshScores();
     actionLog.textContent = "New Game";
     let gameOver = document.querySelector('.gameOver');
     document.querySelector('.log').removeChild(gameOver);
+    document.querySelector('.log').removeChild(document.querySelector('.log > .btn'));
+    playerScore = 0;
+    computerScore = 0;
+    gamesPlayed = 0;
+    refreshScores();
+}
+
+function startOverButton() {
+    startOverBtn = document.createElement('button');
+    startOverBtn.classList.add('btn');
+    startOverBtn.style["background"] = "rgb(240, 247, 151)";
+    startOverBtn.style["align"] = "center";
+    startOverBtn.textContent = "Play Again";
+    startOverBtn.addEventListener('click', startOver);
+    document.querySelector('.log').appendChild(startOverBtn);
+}
+
+function refreshScores() {
+    psNum.textContent = `${playerScore}`;
+    csNum.textContent = `${computerScore}`;
+    gNum.textContent = `${gamesPlayed}`;
 }
 
 /*

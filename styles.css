@@ -3,6 +3,7 @@
     font-size: larger;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     color: white;
+    padding: 10px;
 }
 
 .playSpace {
@@ -40,4 +41,19 @@
 
 p {
     text-align: center;
+}
+
+.log {
+    text-align: center;
+    margin: 10px;
+}
+
+.counter {
+    width: 300px;
+    font-family: 'Kanit', sans-serif;
+    font-weight: bold;
+    font-size: 28px;
+    background: rgb(196, 86, 146);
+    border: 8px solid rgb(240, 247, 151);
+    margin: 10px;
 }
