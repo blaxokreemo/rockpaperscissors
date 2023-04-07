@@ -86,23 +86,48 @@ buttons.forEach(btn => btn.addEventListener('click', startGame));
 
 function startGame(e) {
 
+    actionLog.textContent = playRound(e.target.getAttribute("data-move"));
+    psNum.textContent = `${playerScore}`;
+    csNum.textContent = `${computerScore}`;
+    gNum.textContent = `${gamesPlayed}`;
+
     if (playerScore >= 5) {
         gameOver = document.createElement('p');
         gameOver.classList.add("gameOver")
         gameOver.textContent = `Congratulations! You won ${playerScore} to ${computerScore}!`
-        document.querySelector('#numbers').appendChild(gameOver);
+        document.querySelector('.log').appendChild(gameOver);
+        startOverBtn = document.createElement('button');
+        startOverBtn.classList.add('btn');
+        startOverBtn.style["background"] = "rgb(240, 247, 151)";
+        startOverBtn.style["align"] = "center";
+        startOverBtn.textContent = "Play Again";
+        startOverBtn.addEventListener('click', startOver);
+        document.querySelector('.log').appendChild(startOverBtn);
     } else if (computerScore >= 5) {
         gameOver = document.createElement('p');
         gameOver.classList.add("gameOver");
         gameOver.textContent = `Too bad! You lost against the computer ${computerScore} to ${playerScore}!`;
-        document.querySelector('#numbers').appendChild(gameOver);
+        document.querySelector('.log').appendChild(gameOver);
+        startOverBtn = document.createElement('button');
+        startOverBtn.classList.add('btn');
+        startOverBtn.style["background"] = "rgb(240, 247, 151)";
+        startOverBtn.style["align"] = "center";
+        startOverBtn.textContent = "Play Again";
+        startOverBtn.addEventListener('click', startOver);
+        document.querySelector('.log').appendChild(startOverBtn);
     } else {
-        actionLog.textContent = playRound(e.target.getAttribute("data-move"));
-        psNum.textContent = `${playerScore}`;
-        csNum.textContent = `${computerScore}`;
-        gNum.textContent = `${gamesPlayed}`;
+        return;
     }
     
+}
+
+function startOver() {
+    psNum.textContent = `${playerScore}`;
+    csNum.textContent = `${computerScore}`;
+    gNum.textContent = `${gamesPlayed}`;
+    actionLog.textContent = "New Game";
+    let gameOver = document.querySelector('.gameOver');
+    document.querySelector('.log').removeChild(gameOver);
 }
 
 /*
