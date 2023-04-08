@@ -21,6 +21,10 @@
     border: 5px solid rgb(126, 114, 114);
     padding: 10px;
     border-radius: 10px;
+    font-family: 'Kanit', sans-serif;
+    font-weight: bold;
+    font-size: 28px;
+    color: white;
 }
 
 .display {
@@ -46,7 +50,15 @@ p {
 .log {
     text-align: center;
     margin: 10px;
+    background:rgb(240, 247, 151);
+    border-radius: 25px;
+    color: black;
+    font-family: 'Kanit', sans-serif;
+    font-weight: 600;
+    font-size: 32px;
+    padding: 20px;
 }
+
 
 .counter {
     width: 300px;
@@ -57,3 +69,4 @@ p {
     border: 8px solid rgb(240, 247, 151);
     margin: 10px;
 }
+

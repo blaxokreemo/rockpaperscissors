@@ -1,4 +1,7 @@
 let actionLog = document.querySelector("#actionLog");
+actionLog.textContent = 'New Game';
+
+let playSpace = document.querySelector('.playSpace')
 
 let computerScore = 0;
 let playerScore = 0;
@@ -32,8 +35,8 @@ function getComputerChoice() {
     return computerChoice;
 }
 
-function playRound(playerSelection, computerChoice) {    
-    
+function playRound(playerSelection, computerChoice) {
+
     computerChoice = getComputerChoice();
     playerSelection = playerSelection.toLowerCase();
     let win = `You win! Your ${playerSelection} beats Computer's ${computerChoice}!`;
@@ -49,7 +52,7 @@ function playRound(playerSelection, computerChoice) {
             playerScore++;
             gamesPlayed++;
             return win;
-            
+
         } else {
             computerScore++;
             gamesPlayed++;
@@ -94,7 +97,7 @@ function startGame(e) {
         gameOver.textContent = `Congratulations! You won ${playerScore} to ${computerScore}!`
         document.querySelector('.log').appendChild(gameOver);
         startOverButton();
-        
+
     } else if (computerScore >= 5) {
         gameOver = document.createElement('p');
         gameOver.classList.add("gameOver");
@@ -104,7 +107,7 @@ function startGame(e) {
     } else {
         return;
     }
-    
+
 }
 
 function startOver() {
@@ -117,12 +120,14 @@ function startOver() {
     computerScore = 0;
     gamesPlayed = 0;
     refreshScores();
+    document.querySelector('.game').prepend(playSpace);
 }
 
 function startOverButton() {
+    document.querySelector('.game').removeChild(playSpace);
     startOverBtn = document.createElement('button');
     startOverBtn.classList.add('btn');
-    startOverBtn.style["background"] = "rgb(240, 247, 151)";
+    /*startOverBtn.style["background"] = "rgb(240, 247, 151)";*/
     startOverBtn.style["align"] = "center";
     startOverBtn.textContent = "Play Again";
     startOverBtn.addEventListener('click', startOver);
